@@ -20,6 +20,7 @@ All of the options would need to be assessed.
 
 ### Research
 
+- http://henrysbench.capnfatz.com/henrys-bench/arduino-projects-tips-and-more/arduino-can-bus-module-1st-network-tutorial/
 - https://www.researchgate.net/publication/269784823_Reliable_and_Cost-Effective_Flight_Testing_of_Ultralight_Aircraft
 
 ### Protocol
