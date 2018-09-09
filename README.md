@@ -31,3 +31,15 @@ All of the options would need to be assessed.
 ### Hardware
 
 - https://www.sparkfun.com/products/13262
+
+## Parts
+
+|--------|-------------|--------|---------|
+|Part no |Description--|Qty-----|Source---|
+|--------|-------------|--------|---------|
+|202425-US1|Stepper Motor and Controller|1|Amazon|
+|224GW/C-R|Twisted Pair, 24 AWG|1|Amazon|
+|B01IV3ZSKO|CAN Bus Module|3|Amazon|
+|EL-CB-001|UNO R3 Board|2|Amazon|
+|EL-CB-001|UNO R3 Starter Kit|1|Amazon|
+|--------|-------------|--------|---------|
