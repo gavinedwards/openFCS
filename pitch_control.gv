@@ -1,18 +1,75 @@
 digraph Pitch {
+  
+  fontname=Helvetica;
+  graph [splines=ortho, nodesep=1]
+  node [style=filled,fillcolor=white,color=black,fontname=Helvetica];
+
+  // Inputs and outputs
+
+  stick_position [shape="parallelogram"];
+  pitch_sensor [shape="parallelogram"];
+  transmit_308 [shape="parallelogram"];
+  read_308 [shape="parallelogram"];
+  transmit_400 [shape="parallelogram"];
+  read_400 [shape="parallelogram"];
+  actuator_discrete_command [shape="parallelogram"];
+
+  // Processes
+
+  normalise_pitch_position [shape="box",label="normalise"];
+  convert_400_to_deg [shape="box",label="convert_to_deg"];
+  convert_308_to_deg [shape="box",label="convert_to_deg"];
+  store_pitch_command [shape="box"];
+  store_pitch_position [shape="box"];
+  pitch_sum [shape="box"];
+
+  // Actuator
+
+  pitch_actuator [shape=doublecircle];
+
   subgraph clusterStick_Controller {
     label = "Stick Controller";
     style=filled;
-    color=lightgrey;
-    read_stick_position -> normalise -> transmit_400;
+    fillcolor=lightgrey;
+    color=black;
+    stick_position -> normalise_pitch_position -> transmit_400;
   }
 
   subgraph clusterPitch_Controller {
     label = "Pitch Controller";
     style=filled;
-    color=lightgrey;
-    read_400 -> convert_400_to_deg;
-    read_
+    fillcolor=lightgrey;
+    color=black;
+    read_400 -> convert_400_to_deg -> store_pitch_command;
+    read_308 -> store_pitch_position;
+    store_pitch_command -> pitch_sum;
+    store_pitch_position -> pitch_sum;
+    pitch_sum -> actuator_discrete_command;
   }
 
-  transmit_400 -> read_400;
+  subgraph clusterPitch_Sensor {
+    label = "Pitch Position Sensor";
+    style=filled;
+    fillcolor=lightgrey;
+    color=black;
+    pitch_sensor -> convert_308_to_deg -> transmit_308;
+  }
+
+  actuator_discrete_command -> pitch_actuator [style=bold,color=green]
+
+  // CANaerospace traffic
+
+  308 [shape=record,label="<f0> CAN_ID\n308|<f1> Node_ID\n0|<f2> Data_type\n2|<f3> Service_code\n0|<f4> Message_code\n=+1|<f5> Message_data|<f6> Message_data|<f7> Message_data|<f8> Message_data"];
+  400 [shape=record,label="<f0> CAN_ID\n400|<f1> Node_ID\n0|<f2> Data_type\n2|<f3> Service_code\n0|<f4> Message_code\n=+1|<f5> Message_data|<f6> Message_data|<f7> Message_data|<f8> Message_data"];
+
+  CANbus [shape=record,label="<f0> t0|<f1> t1|<f2> t2|<f3> t3|<f4> t4|<f5> t5|<f6> ...|<f7> t0|<f8> t_n-1|<f9> t_n"];
+
+  transmit_400 -> 400:f0 [style=bold,color=red];
+  400:f8 -> CANbus:f2:n [style=bold,color=red];
+  transmit_308 -> 308:f0 [style=bold,color=red];
+  308:f8 -> CANbus:f5:n [style=bold,color=red];
+
+  CANbus:f9:e -> read_308 [style=bold,color=red];
+  CANbus:f9:e -> read_400 [style=bold,color=red];
+  
 }
