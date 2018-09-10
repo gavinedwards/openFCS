@@ -14,7 +14,7 @@ Use Commercial Off The Shelf components (COTS) to create a modular, expandable, 
 
 My initial idea would be use a CANaerospace methodology as it is low-cost, reliable, and (for the CAN element) prolific in today's automotive industry.  Hardware could be ardino with a CANbus shield control modules driven by a USB flight controller or custom stick and rudder.  Surfaces would be driven from COTS actuators.
 
-![Pitch Control Example](pitch_cotnrol.png)
+![Pitch Control Example](pitch_control.png)
 
 ## Pre-reading
 
