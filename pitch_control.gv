@@ -1,7 +1,7 @@
 digraph Pitch {
   
   fontname=Helvetica;
-  graph [splines=ortho, nodesep=1]
+  graph [nodesep=1]
   node [style=filled,fillcolor=white,color=black,fontname=Helvetica];
 
   // Inputs and outputs
@@ -47,8 +47,8 @@ digraph Pitch {
     pitch_sum -> actuator_discrete_command;
   }
 
-  subgraph clusterPitch_Sensor {
-    label = "Pitch Position Sensor";
+  subgraph clusterElevator_Sensor {
+    label = "Elevator Position Sensor";
     style=filled;
     fillcolor=lightgrey;
     color=black;
