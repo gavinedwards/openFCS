@@ -2,11 +2,13 @@
 
 ## Introduction
 
-The idea behind this repo is to create a record of the development of an open source, fly-by-wire, flight control system.  The end goal is to have a functioning prototype that could be tested against a back-up conventional flight control system on a special certificate, experimental aircraft.
+The idea behind this repo is to create a record of the development of an open source, fly-by-wire, flight control system (FCS).  The end goal is to have a functioning prototype that could be tested against a back-up conventional flight control system on a special certificate, experimental aircraft.
 
 ## Concept
 
 Use Commercial Off The Shelf components (COTS) to create a modular, expandable, and flexible flight control system.
+
+Although the name suggests this is a FCS project, there is no reason the concept couldn't be expanded to cover all aspects of air vehicle management.
 
 ## Initial thoughts
 
@@ -14,7 +16,7 @@ Use Commercial Off The Shelf components (COTS) to create a modular, expandable, 
 
 My initial idea would be use a CANaerospace methodology as it is low-cost, reliable, and (for the CAN element) prolific in today's automotive industry.  Hardware could be ardino with a CANbus shield control modules driven by a USB flight controller or custom stick and rudder.  Surfaces would be driven from COTS actuators.
 
-![Pitch Control Example](pitch_control.png)
+![Pitch Control Example](img/pitch_control.png)
 
 ## Pre-reading
 

@@ -64,10 +64,11 @@ digraph Pitch {
 
   CANbus [shape=record,label="<f0> t0|<f1> t1|<f2> t2|<f3> t3|<f4> t4|<f5> t5|<f6> ...|<f7> t0|<f8> t_n-1|<f9> t_n"];
 
-  transmit_400 -> 400:f0 [style=bold,color=red];
-  400:f8 -> CANbus:f2:n [style=bold,color=red];
   transmit_308 -> 308:f0 [style=bold,color=red];
+  transmit_400 -> 400:f0 [style=bold,color=red];
+
   308:f8 -> CANbus:f5:n [style=bold,color=red];
+  400:f8 -> CANbus:f2:n [style=bold,color=red];
 
   CANbus:f9:e -> read_308 [style=bold,color=red];
   CANbus:f9:e -> read_400 [style=bold,color=red];
