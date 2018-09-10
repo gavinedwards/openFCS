@@ -1,0 +1,18 @@
+digraph Pitch {
+  subgraph clusterStick_Controller {
+    label = "Stick Controller";
+    style=filled;
+    color=lightgrey;
+    read_stick_position -> normalise -> transmit_400;
+  }
+
+  subgraph clusterPitch_Controller {
+    label = "Pitch Controller";
+    style=filled;
+    color=lightgrey;
+    read_400 -> convert_400_to_deg;
+    read_
+  }
+
+  transmit_400 -> read_400;
+}
